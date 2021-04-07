@@ -471,6 +471,9 @@ var zoomPlugin = {
 
     if (Hammer) {
       var mc = new Hammer.Manager(node);
+      if (chartInstance.$zoom._options.zoom.mode === 'x' && chartInstance.$zoom._options.pan.mode === 'x') {
+        mc.set({touchAction: 'pan-y'});
+      }
       mc.add(new Hammer.Pinch());
       mc.add(new Hammer.Pan({
         threshold: panThreshold
